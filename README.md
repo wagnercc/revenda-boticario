@@ -1,4 +1,4 @@
-# RevendaBoticario
+# Revenda Boticario
 
 ### Primeiramente, obrigado pela oportunidade
 
