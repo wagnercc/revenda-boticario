@@ -8,7 +8,15 @@
   Ao rodar o projeto, pela primeira vez, execute o comando **npm install**, após instalação dos pacotes, feche e abra novamente seu terminal.  
   **Sempre deverá rodar o comando *json-server --watch db.json* junto com a aplicação**  
   É esperado que a database fake, esteja na porta **3000**  
-O projeto funciona da seguinte forma:  
+  
+  ### Usuários
+  Existem dois usuários cadastrados no sistema:  
+  1- administrador  
+      email: adm@boticario.com.br - senha: 1234  
+  2- usuário de teste
+      email: email@teste.com - senha: 4321  
+  
+### Funcionamento do Projeto
  1- Existe **um usuário administrador** do sistema  
  2- Este usuário administrador, é encarregado de **Aprovar ou Reprovar** os valores de cashbacks que são gerados **automaticamente** para cada compra de um usuário não administrador.  
  3- Só existe **um usuário administrador** - dados de acesso: adm@boticario.com.br senha: 1234;  
