@@ -15,11 +15,14 @@ export class AppComponent {
   constructor(private loginService: LoginService) {
     this.loginService.currentUser.subscribe(x => this.currentUser = x);
     this.isAdmin = loginService.isAdmin();
-    if (this.currentUser != null)
-      this.name = this.currentUser.name;
   }
 
   ngOnInit() {
+    if (this.currentUser != null) {
+      this.name = this.currentUser.name;
+    } else {
+      this.name = "Usuário";
+    }
   }
 
   logout() {

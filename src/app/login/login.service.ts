@@ -60,7 +60,12 @@ export class LoginService {
   }
 
   isAdmin(): boolean {
-    return JSON.parse(sessionStorage.getItem('currentUser')).isAdmin;
+    let currentUser = sessionStorage.getItem('currentUser');
+    if (currentUser != null) {
+      return JSON.parse(sessionStorage.getItem('currentUser')).isAdmin;
+    } else {
+      return false;
+    }
   }
 
   /**
