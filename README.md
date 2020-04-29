@@ -1,27 +1,13 @@
 # RevendaBoticario
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+## Primeiramente, obrigado pela oportunidade
 
-## Development server
+# * Instruções *
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+O projeto funciona da seguinte forma:
+ 1- Existe um usuário administrador do sistema
+ 2- Este usuário administrador, é encarregado de Aprovar ou Reprovar os valores de cashbacks que são gerados automaticamente para cada compra de um usuário não administrador.
+ 3- Só existe um usuário administrador - dados de acesso: adm@boticario.com.br senha: 1234;
+ 4- O usuário não administrador, terá seu dashboard com um gráfico mostrando os cashbacks conforme foram aprovados pelo administrador
+ 5- Ao ter seu cashback aprovado, o valor é disponibilizado na hora de realizar uma nova compra para o usuário.
+ 6- Caso o usuário não use totalmente seu cashback, este valor restante, será salvo no novo registro de compra e os antigos, serão inativados
