@@ -4,15 +4,21 @@
     font-weight: lighter;
 }
 
-.grid-teste {
+.grid-layout-grid {
     display: grid;
     grid-template-columns: 5% 60%;
     grid-gap: 15px;
     justify-content: center;
 }
 
-.grid-teste > div {
+.grid-layout-grid > div {
     grid-column: 2;
+}
+
+.message-table {
+    font-size: 1.3rem;
+    font-weight: lighter;
+    color: #c7c7c7;
 }
 
 .width-height-canvas-chart {

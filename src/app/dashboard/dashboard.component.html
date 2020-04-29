@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12 mt-2">
         <!-- <h3 class="message-table">Dashboard</h3> -->
-        <div class="row" *ngIf="containCashback" style="justify-content: center;">
+        <div class="row"  style="justify-content: center;">
             <div class="col-4 col-sm-4 col-md-3 mb-5">
                 <div style="border-bottom: 3px solid #3ABF38; text-align: center;">
                     <h4 class="font-card">{{cashbacksApproved}}</h4>
@@ -21,7 +21,7 @@
                     <h4 *ngIf="isAdmin" class="font-card">Cashbacks pendentes</h4>
                 </div>
             </div>
-            <ng-container *ngIf="!isAdmin">
+            <ng-container *ngIf="!isAdmin && containCashback">
                 <div class="col-12 col-sm-12 col-md-10">
                     <div class="card-chart" *ngIf="chartReady">
                         <canvas class="width-height-canvas-chart" baseChart [datasets]="barChartData"
@@ -71,7 +71,7 @@
         </div>
         <div class="row" *ngIf="!containCashback && !chartReady">
             <div class="col-md-12 text-center mt-5">
-                <h4 class="message-table">Não existe nenhum cashback cadastrado ou aprovado para o seu usuário!</h4>
+                <h4 class="message-table">Não existe nenhum cashback aprovado para o seu usuário!</h4>
             </div>
         </div>
     </div>

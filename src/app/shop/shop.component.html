@@ -41,6 +41,7 @@
         </ng-container>
         <ng-container *ngIf="shopsList.length <= 0">
             <h3 class="message-table">Não existe nenhum registro de compras</h3>
+            <button class="btn btn-shop " href="#reactiveModal" data-toggle="modal">Realizar Compra</button>
         </ng-container>
     </div>
 </div>
@@ -62,7 +63,7 @@
                     <div class="row">
                         <div class="col-md-12 text-right mt-2 mb-4" *ngIf="haveCashback">
                             <h3 style="font-size: 16px; color: white; font-weight: lighter;">Cashback disponível <b
-                                    style="color: rgb(35, 150, 35);">R$ {{valueCasbackDiscountDisplay}}</b></h3>
+                                    style="color: rgb(35, 150, 35);">R$ {{valueCashbackDiscountDisplay}}</b></h3>
                             <h3 *ngIf="valueCashbackApplicated < '1'"
                                 style="font-size: 16px; color: white; font-weight: lighter;">Valor a ser pago: <b
                                     style="color: rgb(35, 150, 35);">R$ 0,00</b></h3>

@@ -19,8 +19,8 @@ export class ShopComponent implements OnInit {
   // Início Declaração de variáveis
   shopsList: ShopModel[];
   userModel: User;
-  valueCasbackDiscount: number = 0;
-  valueCasbackDiscountDisplay: string;
+  valueCashbackDiscount: number = 0;
+  valueCashbackDiscountDisplay: string;
   valueCashbackApplicated: string = "0,00";
   haveCashback: boolean = true;
   shopListApproveds = [];
@@ -95,7 +95,6 @@ export class ShopComponent implements OnInit {
       shopObj.idUser = this.getUserFromSessionStorage().id;
       shopObj.code = formObj.value.codigo;
       shopObj.date = new Date(formObj.value.data).toLocaleDateString('pt-BR');
-
       if (this.haveCashback) {
         this.setInactiveShopRegister();
         let valueOnCashback;
@@ -103,7 +102,8 @@ export class ShopComponent implements OnInit {
         if (this.valueCashbackApplicated.includes(",")) {
           valueOnCashback = (parseFloat(this.valueCashbackApplicated.split(".").join("").replace(",", ".")));
         } else {
-          valueOnCashback = (parseFloat(this.valueCashbackApplicated));
+          let addDecimalCase = this.valueCashbackApplicated + ",00";
+          valueOnCashback = parseFloat(addDecimalCase.split(".").join("").replace(",", "."));
         }
 
         //if para verificar se o valor digitado é maior do que o cashback aplicado
@@ -119,12 +119,12 @@ export class ShopComponent implements OnInit {
           let cashbackRemaining, diffValueCashback; //variavel diff pois pega o valor digitado - menos o cashback e subtrai com o valor total do cashback
           //if para verificar se o número é negativo e aplicar o calculo adequado
           if (valueOnCashback < 0) {
-            diffValueCashback = this.valueCasbackDiscount + valueOnCashback
+            diffValueCashback = this.valueCashbackDiscount + valueOnCashback
           } else {
-            diffValueCashback = this.valueCasbackDiscount - valueOnCashback
+            diffValueCashback = this.valueCashbackDiscount - valueOnCashback
           }
 
-          cashbackRemaining = this.valueCasbackDiscount - diffValueCashback;
+          cashbackRemaining = this.valueCashbackDiscount - diffValueCashback;
           shopObj.cashbackPorcent = 0;
           shopObj.cashbackValue = cashbackRemaining.toLocaleString("pt-BR");
           shopObj.value = "0,00";
@@ -178,7 +178,7 @@ export class ShopComponent implements OnInit {
     * @params shopValue - a value from input of html
     */
   useCashback(shopValue) {
-    this.valueCashbackApplicated = (parseFloat(shopValue.substring(3, 20).split(".").join("").replace(",", ".")) - this.valueCasbackDiscount).toLocaleString("pt-BR");
+    this.valueCashbackApplicated = (parseFloat(shopValue.substring(3, 20).split(".").join("").replace(",", ".")) - this.valueCashbackDiscount).toLocaleString("pt-BR");
   }
 
   /**
@@ -196,16 +196,16 @@ export class ShopComponent implements OnInit {
       let filteredValuesCashback = shopApprovedList.map(m => m.cashbackValue);
       for (var i = 0; i < filteredValuesCashback.length; i++) {
         if (filteredValuesCashback[i].includes(",")) {
-          this.valueCasbackDiscount += parseFloat(filteredValuesCashback[i].split(".").join("").replace(",", "."));
+          this.valueCashbackDiscount += parseFloat(filteredValuesCashback[i].split(".").join("").replace(",", "."));
         } else {
-          this.valueCasbackDiscount += parseFloat(filteredValuesCashback[i]);
+          let addDecimalCase = filteredValuesCashback + ",00";
+          this.valueCashbackDiscount += parseFloat(addDecimalCase.split(".").join("").replace(",", "."));
         }
       }
-      this.valueCasbackDiscountDisplay = this.valueCasbackDiscount.toLocaleString("pt-BR");
+      this.valueCashbackDiscountDisplay = this.valueCashbackDiscount.toLocaleString("pt-BR");
     } else {
       this.haveCashback = false;
     }
-
   }
 
   /**
@@ -249,7 +249,7 @@ export class ShopComponent implements OnInit {
     document.getElementById("inputCode")['value'] = "";
     document.getElementById("inputDate")['value'] = "";
     document.getElementById("inputValue")['value'] = "";
-    this.valueCasbackDiscountDisplay = "";
+    this.valueCashbackDiscountDisplay = "";
     this.valueCashbackApplicated = "";
   }
 
