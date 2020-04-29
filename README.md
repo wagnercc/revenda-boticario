@@ -2,8 +2,11 @@
 
 ### Primeiramente, obrigado pela oportunidade
 
-## * Instruções *
+## O projeto utiliza json-server para simular uma database, leia as instruções a seguir:  
 
+## * Instruções *
+  Ao rodar o projeto, sempre deverá rodar também o comando **json-server --watch db.json**  
+  É esperado que a database fake, esteja na porta **3000**  
 O projeto funciona da seguinte forma:  
  1- Existe **um usuário administrador** do sistema  
  2- Este usuário administrador, é encarregado de **Aprovar ou Reprovar** os valores de cashbacks que são gerados **automaticamente** para cada compra de um usuário não administrador.  
