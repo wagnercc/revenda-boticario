@@ -5,7 +5,8 @@
 ## O projeto utiliza json-server para simular uma database, leia as instruções a seguir:  
 
 ## * Instruções *
-  Ao rodar o projeto, sempre deverá rodar também o comando **json-server --watch db.json**  
+  Ao rodar o projeto, pela primeira vez, execute o comando **npm install**, após instalação dos pacotes, feche e abra novamente seu terminal.  
+  **Sempre deverá rodar o comando *json-server --watch db.json* junto com a aplicação**  
   É esperado que a database fake, esteja na porta **3000**  
 O projeto funciona da seguinte forma:  
  1- Existe **um usuário administrador** do sistema  
