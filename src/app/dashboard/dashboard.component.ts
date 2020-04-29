@@ -136,9 +136,12 @@ export class DashboardComponent implements OnInit {
   * @params obj - contain a all registers from table shop
   */
   getCountCashbacks(obj) {
-    this.cashbacksApproved = obj.filter(f => f.status == "Aprovado").length
-    this.cashbacksRepproved = obj.filter(f => f.status == "Reprovado").length
-    this.cashbacksHold = obj.filter(f => f.status == "Em análise").length
+    let user = JSON.parse(sessionStorage.getItem('currentUser'));
+    let objFiltered = obj.filter(f => f.idUser == user.id);
+
+    this.cashbacksApproved = objFiltered.filter(f => f.status == "Aprovado").length;
+    this.cashbacksRepproved = objFiltered.filter(f => f.status == "Reprovado").length;
+    this.cashbacksHold = objFiltered.filter(f => f.status == "Em análise").length;
   }
 
   /**

@@ -188,7 +188,10 @@ export class ShopComponent implements OnInit {
    * @params shopList - contains a all registers from shop database
    */
   getCashbackDiscount(shopList) {
-    this.shopListApproveds = shopList.filter(f => f.status == "Aprovado");
+    let user = JSON.parse(sessionStorage.getItem('currentUser'));
+    let objFiltered = shopList.filter(f => f.idUser == user.id);
+
+    this.shopListApproveds = objFiltered.filter(f => f.status == "Aprovado");
     let shopApprovedList = this.shopListApproveds;
 
     if (shopApprovedList.length > 0) {

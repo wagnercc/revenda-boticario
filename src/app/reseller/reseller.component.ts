@@ -30,7 +30,7 @@ export class ResellerComponent implements OnInit {
     userObj.name = objForm.value.name;
     userObj.cpf = objForm.value.cpf;
     userObj.email = objForm.value.email;
-    userObj.password = atob(objForm.value.password);
+    userObj.password = btoa(objForm.value.password);
     userObj.isAdmin = false;
 
     this.userService.add(userObj).subscribe(
