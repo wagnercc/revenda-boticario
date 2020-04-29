@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-md-12 mt-2">
+        <!-- <h3 class="message-table">Dashboard</h3> -->
+        <div class="row" *ngIf="containCashback" style="justify-content: center;">
+            <div class="col-4 col-sm-4 col-md-3 mb-5">
+                <div style="border-bottom: 3px solid #3ABF38; text-align: center;">
+                    <h4 class="font-card">{{cashbacksApproved}}</h4>
+                    <h4 class="font-card">Cashbacks aprovados</h4>
+                </div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-3">
+                <div style="border-bottom: 3px solid #BF3838; text-align: center;">
+                    <h4 class="font-card">{{cashbacksRepproved}}</h4>
+                    <h4 class="font-card">Cashbacks reprovados</h4>
+                </div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-3">
+                <div style="border-bottom: 3px solid #1E98B2; text-align: center;">
+                    <h4 class="font-card">{{cashbacksHold}}</h4>
+                    <h4 *ngIf="!isAdmin" class="font-card">Cashbacks em análise</h4>
+                    <h4 *ngIf="isAdmin" class="font-card">Cashbacks pendentes</h4>
+                </div>
+            </div>
+            <ng-container *ngIf="!isAdmin">
+                <div class="col-12 col-sm-12 col-md-10">
+                    <div class="card-chart" *ngIf="chartReady">
+                        <canvas class="width-height-canvas-chart" baseChart [datasets]="barChartData"
+                            [labels]="barChartLabels" [options]="barChartOptions" [plugins]="barChartPlugins"
+                            [legend]="barChartLegend" [chartType]="barChartType">
+                        </canvas>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="isAdmin">
+                <div class="col-12 col-sm-12 col-md-10 text-center">
+                    <div class="card-chart">
+                        <ng-container *ngIf="listUserCashbacks.length > 0">
+                            <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Próximo"
+                                responsive="true" style="text-align: right"></pagination-controls>
+                            <table id="tableUser" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>CPF</th>
+                                        <th>Valor Cashback</th>
+                                        <th colspan="2">Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr
+                                        *ngFor="let userCashback of listUserCashbacks | paginate: { itemsPerPage: 4, currentPage: p }">
+                                        <td>{{ userCashback.cpf }}</td>
+                                        <td>{{ userCashback.cashbackValue }}</td>
+                                        <td><button class="btn btn-approve"
+                                                (click)="approveRepproveCashback('aprovar', userCashback.idCashback)">Aprovar</button>
+                                        </td>
+                                        <td><button class="btn btn-delete"
+                                                (click)="approveRepproveCashback('reprovar', userCashback.idCashback)">Excluir</button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </ng-container>
+                        <ng-container *ngIf="listUserCashbacks.length <= 0">
+                            <h3 class="message-table">Não existe nenhum registro para aprovar/reprovar</h3>
+                        </ng-container>
+
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="row" *ngIf="!containCashback && !chartReady">
+            <div class="col-md-12 text-center mt-5">
+                <h4 class="message-table">Não existe nenhum cashback cadastrado ou aprovado para o seu usuário!</h4>
+            </div>
+        </div>
+    </div>
+</div>

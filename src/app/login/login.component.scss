@@ -1,0 +1,52 @@
+.card-login {
+    display: grid;
+    grid-template-areas: 1fr;
+    align-items: center;
+    background: #6969843b;
+    width: 35vw;
+    height: 55vh;
+    border-radius: 5px;
+    padding: 25px;
+    box-shadow: 2px 0px 5px 1px #35353594
+}
+
+.form-control {
+    background-color: transparent;
+    border: 1px solid #4f577383;
+    color: white;
+}
+
+.btn-login {
+    background: #1a4979;
+    border: 1px solid #1a4979;
+    color: white;
+}
+
+.btn-login:hover {
+    background: #153e66;
+    border: 1px solid #153e66;
+    color: white;
+}
+
+
+
+@media only screen and (max-width: 1080px) {
+    .card-login{
+        width: 55vw;
+        height: 60vh;
+    }
+}
+
+@media only screen and (max-width: 530px) {
+    .card-login{
+        width: 95vw;
+        height: 60vh;
+    }
+}
+
+@media only screen and (min-width: 531px) and (max-width: 700px) {
+    .card-login{
+        width: 70vw;
+        height: 60vh;
+    }
+}

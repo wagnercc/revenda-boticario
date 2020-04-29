@@ -1,0 +1,42 @@
+{
+  "shop": [
+    {
+      "id": 31,
+      "code": "1234",
+      "date": "29/04/2020",
+      "status": "Inativo",
+      "idUser": 2,
+      "value": "0,00",
+      "cashbackValue": "3,45",
+      "cashbackPorcent": 0
+    },
+    {
+      "id": 32,
+      "code": "12355",
+      "idUser": 2,
+      "value": "25.000,01",
+      "date": "29/04/2020",
+      "cashbackValue": "2.000",
+      "cashbackPorcent": 8,
+      "status": "Aprovado"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Administrador",
+      "cpf": "123.456.789-10",
+      "email": "adm@boticario.com.br",
+      "password": "MTIzNA==",
+      "isAdmin": true
+    },
+    {
+      "name": "Nome Teste",
+      "cpf": "123.412.312-41",
+      "email": "email@teste.com",
+      "password": "NDMyMQ==",
+      "isAdmin": false,
+      "id": 2
+    }
+  ]
+}

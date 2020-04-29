@@ -1,0 +1,98 @@
+h1,h2,h3,h4,h5,h6 {
+    color: black;
+}
+
+span {
+    display: block;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+.btn-shop {
+    background-color: #495E8F;
+    color: white;
+}
+
+.btn-shop:hover {
+    background-color: rgb(60, 79, 124);
+}
+
+.color-white {
+    color: white;
+}
+
+.font-title {
+    color: rgb(241, 241, 241);
+}
+
+.table {
+    color: white;
+    font-size: 14px;
+}
+
+.style-div-table {
+    background-color: #fdfdfd;
+    border: 1px solid #cecece;
+    border-radius: 8px;
+    box-shadow: 0px 3px 5px 3px #cecece;
+}
+
+.table-card {
+    background-color: #283042;
+    border-radius: 8px;
+    padding: 10px;
+    // padding: 20px 10px 10px 15px;
+}
+
+.modal-title {
+    color: white;
+    font-weight: bold;
+}
+
+.status-approved {
+    background-color: #0d964b;
+    color: white;
+
+}
+
+.status-repproved {
+    background-color: #c13838;
+    color: white;
+
+}
+
+.status-hold {
+    background-color: #19999c;
+    color: white;
+
+}
+
+.status-inactive {
+    background-color: #575757;
+    opacity: 0.5;
+    color: white;
+
+}
+
+.btn-delete {
+    background-color: #b73131;
+    color: white;
+    font-size: 14px;
+}
+
+.btn-delete:hover {
+    background-color: #ad2525;
+    color: white;
+}
+
+.full-width {
+    width: 100%;
+}
+
+@media only screen and (max-width: 870px) {
+    #tableShop{
+        display: block;
+        width: 100%;
+        overflow: scroll;
+    }
+}

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LoginService } from './login/login.service';
+import { User } from './login/user';
 
 @Component({
   selector: 'revenda-boticario-root',
@@ -6,5 +8,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'revenda-boticario';
+  currentUser: User;
+  name: string = "";
+  isAdmin: boolean = true;
+
+  constructor(private loginService: LoginService) {
+    this.loginService.currentUser.subscribe(x => this.currentUser = x);
+    this.isAdmin = loginService.isAdmin();
+    if (this.currentUser != null)
+      this.name = this.currentUser.name;
+  }
+
+  ngOnInit() {
+  }
+
+  logout() {
+    this.loginService.logout();
+  }
 }

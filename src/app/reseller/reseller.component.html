@@ -1,0 +1,72 @@
+<div class="row" style="justify-content: center;">
+    <div class="col-md-10 mt-4">
+        <div class="reseller-card">
+            <form #resellerForm="ngForm" (ngSubmit)="addUser(resellerForm)">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-4">
+                        <mat-form-field class="full-width">
+                            <mat-label>Nome Completo</mat-label>
+                            <input id="inputCode" type="text" class="color-white" matInput
+                                placeholder="Ex. João da Silva" name="name" required ngModel>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-2">
+                        <mat-form-field class="full-width">
+                            <mat-label>CPF</mat-label>
+                            <input id="cpfInput" matInput type="text" placeholder="Ex: 123.456.789-10" name="cpf"
+                                maxlength="14" (keyup)="cpfMask($event.target.value)" required ngModel>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4">
+                        <mat-form-field class="full-width">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Ex: seuemail@email.com.br" type="email" name="email" required
+                                ngModel>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-2">
+                        <mat-form-field class="full-width">
+                            <mat-label>Senha</mat-label>
+                            <input style="color: white;" matInput name="password" type="password" required ngModel>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-12 mt-4">
+                        <button type="submit" class="btn btn-shop ">Salvar</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-12 text-center">
+        <h3 class="text-info-table">Revendedores Cadastrados</h3>
+        <div class="reseller-card">
+            <ng-container *ngIf="usersList.length > 0">
+                <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Próximo"
+                    responsive="true" style="text-align: right"></pagination-controls>
+                <table id="tableUser" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Email</th>
+                            <th>Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let userList of usersList | paginate: { itemsPerPage: 4, currentPage: p }">
+                            <td>{{ userList.name }}</td>
+                            <td>{{ userList.cpf }}</td>
+                            <td>{{ userList.email }}</td>
+                            <td><button class="btn btn-delete" (click)="deleteUser(userList.id)">Excluir</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ng-container>
+            <ng-container *ngIf="usersList.length <= 0">
+                <h3 class="message-table">Não existe nenhum usuário cadastrado</h3>
+            </ng-container>
+        </div>
+    </div>
+</div>

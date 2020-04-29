@@ -1,0 +1,77 @@
+.font-card {
+    font-size: 16px;
+    color: white;
+    font-weight: lighter;
+}
+
+.grid-teste {
+    display: grid;
+    grid-template-columns: 5% 60%;
+    grid-gap: 15px;
+    justify-content: center;
+}
+
+.grid-teste > div {
+    grid-column: 2;
+}
+
+.width-height-canvas-chart {
+    max-height: 70vh;
+    max-width: 95%;
+    margin: auto;
+}
+
+.card-chart {
+    background-color: #283042;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.btn-approve {
+    background-color: #1f965d;
+    width: 100%;
+    color: white;
+    font-size: 14px;
+}
+
+.btn-approve:hover {
+    background-color: #1a794b;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #b73131;
+    width: 100%;
+    color: white;
+    font-size: 14px;
+}
+
+.btn-delete:hover {
+    background-color: #ad2525;
+    color: white;
+}
+
+.table {
+    color: white;
+    font-size: 14px;
+}
+
+@media only screen and (max-width: 870px) {
+    #tableUser{
+        display: block;
+        width: 100%;
+        overflow: scroll;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 370px) {
+    #tableUser{
+        display: block;
+        width: 100%;
+        overflow: scroll;
+    }
+
+    .font-card {
+        font-size: 0.8rem;
+    }
+}

@@ -1,0 +1,44 @@
+.container-fluid {
+    background: linear-gradient(to right, #1d2331, #212940);;
+    height: 100vh;
+}
+
+.bg-dark {
+    background: #283042 !important;
+}
+
+.active {
+    border-radius: 3px;
+    // border-bottom: 2px solid #f16a36e8;
+    background: #df6231e8;
+}
+
+.logout-li {
+    display: flex;
+    align-items: center;
+}
+
+.color-icon {
+    color: #a5a5a5;
+}
+
+.logout-link {
+    font-size: 12px;
+    color: #a5a5a5;
+    padding-left: 0 !important;
+}
+
+.logout-link:hover {
+    cursor: pointer;
+}
+
+
+
+@media only screen and (max-width: 991px) {
+    .resize-small-screen {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: 20vw 1fr;
+    }
+}

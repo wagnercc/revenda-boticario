@@ -1,0 +1,107 @@
+<div class="row" style="justify-content: center;">
+    <div class="col-md-12 text-center mt-4">
+        <h3 class="font-title">- Listagem e Registro de Compras -</h3>
+    </div>
+    <div class="col-md-10 mt-5 table-card text-center">
+        <ng-container *ngIf="shopsList.length > 0">
+            <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Próximo"
+                responsive="true" style="text-align: right"></pagination-controls>
+            <table id="tableShop" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Data</th>
+                        <th>Valor</th>
+                        <th>% Cashback</th>
+                        <th>Valor Cashback</th>
+                        <th>Status</th>
+                        <th>Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let shopItem of shopsList | paginate: { itemsPerPage: 5, currentPage: p }">
+                        <td>{{ shopItem.code }}</td>
+                        <td>{{ shopItem.date }}</td>
+                        <td>R$ {{ shopItem.value }}</td>
+                        <td>{{ shopItem.cashbackPorcent }}%</td>
+                        <td>R$ {{ shopItem.cashbackValue }}</td>
+                        <td *ngIf="shopItem?.status == 'Em análise'">
+                            <span class="status-hold">{{ shopItem.status }}</span></td>
+                        <td *ngIf="shopItem?.status == 'Reprovado'" class="status-">
+                            <span class="status-repproved">{{ shopItem.status }}</span></td>
+                        <td *ngIf="shopItem?.status == 'Aprovado'" class="status-">
+                            <span class="status-approved">{{ shopItem.status }}</span></td>
+                        <td *ngIf="shopItem?.status == 'Inativo'" class="status-">
+                            <span class="status-inactive">{{ shopItem.status }}</span></td>
+                        <td><button class="btn btn-delete" (click)="deleteShop(shopItem.id)">Excluir</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-shop " href="#reactiveModal" data-toggle="modal">Realizar Compra</button>
+        </ng-container>
+        <ng-container *ngIf="shopsList.length <= 0">
+            <h3 class="message-table">Não existe nenhum registro de compras</h3>
+        </ng-container>
+    </div>
+</div>
+
+<!-- Modais -->
+<div class="modal fade" id="reactiveModal" tabindex="-1" role="dialog" aria-labelledby="modalReactiveLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="background-color: #303138;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalReactiveLabel">Realizar nova compra</h5>
+                <button type="button" style="color: white" id="closeModalShop" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #shopForm="ngForm" (ngSubmit)="shopAdd(shopForm)">
+                    <div class="row">
+                        <div class="col-md-12 text-right mt-2 mb-4" *ngIf="haveCashback">
+                            <h3 style="font-size: 16px; color: white; font-weight: lighter;">Cashback disponível <b
+                                    style="color: rgb(35, 150, 35);">R$ {{valueCasbackDiscountDisplay}}</b></h3>
+                            <h3 *ngIf="valueCashbackApplicated < '1'"
+                                style="font-size: 16px; color: white; font-weight: lighter;">Valor a ser pago: <b
+                                    style="color: rgb(35, 150, 35);">R$ 0,00</b></h3>
+                            <h3 *ngIf="valueCashbackApplicated >= '1'"
+                                style="font-size: 16px; color: white; font-weight: lighter;">Valor a ser pago: <b
+                                    style="color: rgb(35, 150, 35);">R$ {{valueCashbackApplicated}}</b></h3>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-4">
+                            <mat-form-field class="full-width">
+                                <mat-label>Código</mat-label>
+                                <input id="inputCode" class="color-white" matInput placeholder="Ex. 1455" name="codigo"
+                                    required ngModel>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-4">
+                            <mat-form-field>
+                                <input id="inputDate" class="color-white full-width" matInput [matDatepicker]="picker"
+                                    placeholder="Informe uma Data" name="data" required ngModel>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-4">
+                            <mat-form-field class="full-width">
+                                <mat-label>Valor</mat-label>
+                                <input id="inputValue" currencyMask matInput class="color-white" placeholder="Ex. 45,00"
+                                    name="valor" maxlength="20" (keyup)="useCashback($event.target.value)" required
+                                    ngModel>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-12 mt-4">
+                            <button type="submit" class="btn btn-shop ">Salvar</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
