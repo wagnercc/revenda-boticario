@@ -9,16 +9,16 @@
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" routerLink="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item" routerLinkActive="active" *ngIf="!isAdmin">
+            <li class="nav-item" routerLinkActive="active" *ngIf="!currentUser.isAdmin">
                 <a class="nav-link" routerLink="/compras">Compras</a>
             </li>
-            <li class="nav-item" routerLinkActive="active" *ngIf="isAdmin">
+            <li class="nav-item" routerLinkActive="active" *ngIf="currentUser.isAdmin">
                 <a class="nav-link" routerLink="/revendedor">Cadastrar Revendedor(a)</a>
             </li>
         </ul>
         <ul class="navbar-nav my-2 my-lg-0 resize-small-screen">
             <li class="nav-item">
-                <a class="nav-link">Olá, {{name}} |</a>
+                <a class="nav-link">Olá, {{currentUser.name}} |</a>
             </li>
             <li class="nav-item logout-li logout-link">
                 <a class="nav-link logout-link" (click)="logout()">Sair</a>
