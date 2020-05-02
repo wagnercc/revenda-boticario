@@ -98,7 +98,6 @@ export class ShopComponent implements OnInit {
       if (this.haveCashback) {
         this.setInactiveShopRegister();
         let valueOnCashback;
-
         if (this.valueCashbackApplicated.includes(",")) {
           valueOnCashback = (parseFloat(this.valueCashbackApplicated.split(".").join("").replace(",", ".")));
         } else {
@@ -201,7 +200,7 @@ export class ShopComponent implements OnInit {
         if (filteredValuesCashback[i].includes(",")) {
           this.valueCashbackDiscount += parseFloat(filteredValuesCashback[i].split(".").join("").replace(",", "."));
         } else {
-          let addDecimalCase = filteredValuesCashback + ",00";
+          let addDecimalCase = filteredValuesCashback[i] + ",00";
           this.valueCashbackDiscount += parseFloat(addDecimalCase.split(".").join("").replace(",", "."));
         }
       }

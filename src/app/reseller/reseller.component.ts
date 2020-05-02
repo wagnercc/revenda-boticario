@@ -26,22 +26,25 @@ export class ResellerComponent implements OnInit {
 
   addUser(objForm: NgForm) {
     let userObj: User = new User;
+    if (!objForm.control.valid) {
+      this.toastr.error('Preencha os campos marcados em vermelho!', 'Erro!');
+    } else {
+      userObj.name = objForm.value.name;
+      userObj.cpf = objForm.value.cpf;
+      userObj.email = objForm.value.email;
+      userObj.password = btoa(objForm.value.password);
+      userObj.isAdmin = false;
 
-    userObj.name = objForm.value.name;
-    userObj.cpf = objForm.value.cpf;
-    userObj.email = objForm.value.email;
-    userObj.password = btoa(objForm.value.password);
-    userObj.isAdmin = false;
-
-    this.userService.add(userObj).subscribe(
-      returnAddUser => {
-        this.toastr.success('O revendedor(a) foi cadastrado com sucesso!', 'REVENDEDOR(A) CADASTRADO(A)!');
-        this.listUser();
-      },
-      err => {
-        console.log("erro", err.message);
-      }
-    )
+      this.userService.add(userObj).subscribe(
+        returnAddUser => {
+          this.toastr.success('O revendedor(a) foi cadastrado com sucesso!', 'REVENDEDOR(A) CADASTRADO(A)!');
+          this.listUser();
+        },
+        err => {
+          console.log("erro", err.message);
+        }
+      )
+    }
   }
 
   deleteUser(id) {
