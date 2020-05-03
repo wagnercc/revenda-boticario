@@ -64,12 +64,15 @@
                         <div class="col-md-12 text-right mt-2 mb-4" *ngIf="haveCashback">
                             <h3 style="font-size: 16px; color: white; font-weight: lighter;">Cashback disponível <b
                                     style="color: rgb(35, 150, 35);">R$ {{valueCashbackDiscountDisplay}}</b></h3>
-                            <h3 *ngIf="valueCashbackApplicated < '1'"
+                            <h3 *ngIf="valueCashbackApplicated < '0'"
                                 style="font-size: 16px; color: white; font-weight: lighter;">Valor a ser pago: <b
                                     style="color: rgb(35, 150, 35);">R$ 0,00</b></h3>
-                            <h3 *ngIf="valueCashbackApplicated >= '1'"
+                            <h3 *ngIf="valueCashbackApplicated > '0'"
                                 style="font-size: 16px; color: white; font-weight: lighter;">Valor a ser pago: <b
                                     style="color: rgb(35, 150, 35);">R$ {{valueCashbackApplicated}}</b></h3>
+                            <h3 *ngIf="valueCashbackApplicated == '0'"
+                                style="font-size: 16px; color: white; font-weight: lighter;">Valor a ser pago: <b
+                                    style="color: rgb(35, 150, 35);">R$ 0,00</b></h3>
                         </div>
                         <div class="col-12 col-sm-12 col-md-4">
                             <mat-form-field class="full-width">

@@ -108,7 +108,7 @@ export class ShopComponent implements OnInit {
         //if para verificar se o valor digitado é maior do que o cashback aplicado
         if (this.valueCashbackApplicated > "0") {
           let cashback = this.cashbackGenerate();
-          let cashbackValue = Math.floor((cashback / 100) * valueOnCashback);
+          let cashbackValue = (cashback / 100) * valueOnCashback;
 
           shopObj.value = this.valueCashbackApplicated;
           shopObj.cashbackPorcent = cashback;
@@ -131,7 +131,7 @@ export class ShopComponent implements OnInit {
         }
       } else {
         let cashback = this.cashbackGenerate();
-        let cashbackValue = Math.floor((cashback / 100) * formObj.value.valor);
+        let cashbackValue = (cashback / 100) * formObj.value.valor;
 
         shopObj.cashbackPorcent = cashback;
         shopObj.cashbackValue = cashbackValue.toLocaleString('pt-BR');
@@ -177,7 +177,8 @@ export class ShopComponent implements OnInit {
     * @params shopValue - a value from input of html
     */
   useCashback(shopValue) {
-    this.valueCashbackApplicated = (parseFloat(shopValue.substring(3, 20).split(".").join("").replace(",", ".")) - this.valueCashbackDiscount).toLocaleString("pt-BR");
+    let cashbackApplicated = (parseFloat(shopValue.substring(3, 20).split(".").join("").replace(",", ".")) - this.valueCashbackDiscount).toLocaleString("pt-BR");
+    this.valueCashbackApplicated = cashbackApplicated == 'NaN' ? "0,00" : cashbackApplicated;
   }
 
   /**
