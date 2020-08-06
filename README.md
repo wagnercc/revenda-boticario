@@ -1,7 +1,5 @@
 # Revenda Boticario
 
-### Primeiramente, obrigado pela oportunidade
-
 ## O projeto utiliza json-server para simular uma database, leia as instruções a seguir:  
 
 ## * Instruções *
